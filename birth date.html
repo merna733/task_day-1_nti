@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Birthday Checker</title>
+  <style>
+    body {
+      background: url("birthday_background.webp") no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      background-color: rgba(128, 0, 128, 0.6); /* purple overlay */
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+
+    button {
+      background-color: white;
+      color: purple;
+      border: none;
+      padding: 12px 24px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Birthday Checker</h1><br>
+  <button onclick="askBirthDay()">Enter Birthday</button>
+
+  <script>
+    function askBirthDay() {
+      let isValid = false;
+      let Birthday;
+
+      while (!isValid) {
+        Birthday = prompt("Enter your Birth date in format (DD-MM-YYYY)");
+
+        if (
+          Birthday.length === 10 &&
+          Birthday.charAt(2) === '-' &&
+          Birthday.charAt(5) === '-'
+        ) {
+          let day = parseInt(Birthday.substring(0, 2));
+          let month = parseInt(Birthday.substring(3, 5)) - 1;
+          let year = parseInt(Birthday.substring(6, 10));
+
+          let date = new Date(year, month, day);
+          alert("Date is: " + date.toDateString());
+          isValid = true;
+        } else {
+          alert("Wrong date format. Please try again (DD-MM-YYYY).");
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
